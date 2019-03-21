@@ -1,0 +1,18 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
+  <p>A productive web framework that<br/>does not compromise speed and maintainability.</p>
+</section>
+
+<%= form_for @changeset, @action, [phx_change: :validate, phx_submit: :save], fn f -> %>
+  <label>Name</label>
+  <%= text_input f, :name %>
+  <label>Email</label>
+  <%= email_input f, :email %>
+
+  <label>Password</label>
+  <%= password_input f, :password %>
+  <label>Password Confirmation</label>
+  <%= password_input f, :password_confirmation %>
+
+  <%= submit "Register", disabled: !@changeset.valid? %>
+<% end %>
